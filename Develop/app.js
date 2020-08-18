@@ -11,15 +11,106 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employees = []; 
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-let questions = [{
-    type: "input",
-    message: "Title of your project: ",
-    name: "title",
-},
+
+// below code provided; needed or just an example?
+        // let questions = [{
+        //     type: "input",
+        //     message: "Title of your project: ",
+        //     name: "title",
+        // },
+        // ]
+
+const engineerQuestions = [
+    {
+        name: "name", 
+        type: "type", 
+        message: "Name of Engineer: ", 
+    }, 
+    {
+        name: "id", 
+        type: "input", 
+        message: "ID# of Engineer: ", 
+    }, 
+    {
+        name: "email", 
+        type: "type", 
+        message: "Email of Engineer: ", 
+    },
+    {
+        name: "github", 
+        type: "type", 
+        message: "Github Account: ", 
+    }      
 ]
+
+const internQuestions = [
+    {
+        name: "name", 
+        type: "type", 
+        message: "Name of Intern: ", 
+    }, 
+    {
+        name: "id", 
+        type: "input", 
+        message: "ID# of Intern: ", 
+    }, 
+    {
+        name: "email", 
+        type: "type", 
+        message: "Email of Intern: ", 
+    },
+    {
+        name: "school", 
+        type: "type", 
+        message: "School Attended: ", 
+    }      
+]
+
+const managerQuestions = [
+    {
+        name: "name", 
+        type: "type", 
+        message: "Name of Manager: ", 
+    }, 
+    {
+        name: "id", 
+        type: "input", 
+        message: "ID# of Manager: ", 
+    }, 
+    {
+        name: "email", 
+        type: "type", 
+        message: "Email of Manager: ", 
+    },
+    {
+        name: "officeNumber", 
+        type: "type", 
+        message: "Office Number: ", 
+    }      
+]
+
+const otherQuestions = [
+    {
+        name: "confirm", 
+        type: "list", 
+        message: "Add another employee or select Finished if done", 
+            choices: [
+                "Engineer", 
+                "Intern", 
+                "Manager", 
+                "Finish"
+            ]
+    }
+]
+
+
+
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!

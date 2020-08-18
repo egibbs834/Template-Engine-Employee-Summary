@@ -17,13 +17,6 @@ const employees = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-// below code provided; needed or just an example?
-        // let questions = [{
-        //     type: "input",
-        //     message: "Title of your project: ",
-        //     name: "title",
-        // },
-        // ]
 
 const engineerQuestions = [
     {
@@ -102,14 +95,43 @@ const otherQuestions = [
             choices: [
                 "Engineer", 
                 "Intern", 
-                "Manager", 
                 "Finish"
             ]
     }
 ]
+// function starts the app with manager questions
+function startApp() {
+    inquirer.prompt(managerQuestions).then(function ({ name, id, email, officeNumber }) {
+        const manager = new Manager(name, id, email, officeNumber);
+        employees.push(manager);
+        console.log(manager);
+        selectEmployee(); 
+    })
+}
+// function - asks if user wants to create an employee, gives options, ends app if answer is Finish
+    // how to check to see what option picked: intern, engineer, finish?
+function selectEmployee() {
 
 
+}
 
+// function - if engineer selected, create engineer, then go back to selectEmployee()
+function addEngineer() {
+
+}
+
+// function - if intern selected, create intern, then go back to selectEmployee()
+function addIntern() {
+    
+}
+
+// function - ends application and outputs an html file (somehow)
+function endApp() {
+
+}
+
+startApp();
+// 
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will

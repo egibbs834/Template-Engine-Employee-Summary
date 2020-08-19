@@ -91,7 +91,7 @@ const otherQuestions = [
     {
         name: "confirm", 
         type: "list", 
-        message: "Add another employee or select Finished if done", 
+        message: "Add another employee or select Finish if done", 
             choices: [
                 "Engineer", 
                 "Intern", 
@@ -105,29 +105,49 @@ function startApp() {
         const manager = new Manager(name, id, email, officeNumber);
         employees.push(manager);
         console.log(manager);
-        selectEmployee(); 
+        return selectEmployee(); 
     })
 }
+
 // function - asks if user wants to create an employee, gives options, ends app if answer is Finish
     // how to check to see what option picked: intern, engineer, finish?
 function selectEmployee() {
-
-
+    return inquirer.prompt(otherQuestions).then(function ({ confirm }) {
+        if (confirm === "Engineer") {
+            return addEngineer(); 
+        } else if (confirm === "Intern") {
+            return addIntern(); 
+        } else {
+            return endApp();
+        }
+    })
 }
 
 // function - if engineer selected, create engineer, then go back to selectEmployee()
 function addEngineer() {
-
+    return inquirer.prompt(engineerQuestions).then(function ({ name, id, email, github }) {
+        const engineer = new Engineer(name, id, email, github);
+        employees.push(engineer);
+        console.log(engineer);
+        return selectEmployee(); 
+    })
 }
 
 // function - if intern selected, create intern, then go back to selectEmployee()
 function addIntern() {
-    
+    return inquirer.prompt(internQuestions).then(function ({ name, id, email, school }) {
+        const intern = new Intern(name, id, email, school);
+        employees.push(intern);
+        console.log(intern);
+        return selectEmployee(); 
+    })
+
 }
 
 // function - ends application and outputs an html file (somehow)
 function endApp() {
-
+    const html = render(employees);
+    fs.writeFileSync("./output/team.html", html, "utf8");
 }
 
 startApp();

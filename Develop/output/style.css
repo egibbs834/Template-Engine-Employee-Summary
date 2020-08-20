@@ -1,12 +1,35 @@
 .team-heading {
-    font-style: italic;
-    background-color: lightblue;
+    color: black;
+    background-color: rgb(243, 170, 35);
+    border-bottom-style: solid;
+    border-color: black;
 }
  
-body {
-    background-color: rgb(251, 146, 135);
+.card {
+    width: 250px;
 }
 
-/* h1 {
-    font-style: italic;
-}  */
+.card:hover {
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ 
+}
+
+.card-header {
+    background-color: rgb(243, 170, 35);
+
+}
+
+.card-body {
+    background-color:rgb(245, 245, 245);
+}
+
+.employee-card {
+    margin-right: 15px;
+    border-style: solid;
+    border-color: black;
+}
+
+body {
+    background-color: #7fd3fa;
+}

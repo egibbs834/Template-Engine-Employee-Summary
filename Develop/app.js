@@ -13,7 +13,7 @@ const render = require("./lib/htmlRenderer");
 
 const employees = []; 
 
-// array of question objects (expand to see all)
+// array of question objects
 const engineerQuestions = [
     {
         name: "name", 
@@ -100,7 +100,6 @@ function startApp() {
     inquirer.prompt(managerQuestions).then(function ({ name, id, email, officeNumber }) {
         const manager = new Manager(name, id, email, officeNumber);
         employees.push(manager);
-        console.log(manager);
         return selectEmployee(); 
     })
 }
@@ -123,7 +122,6 @@ function addEngineer() {
     return inquirer.prompt(engineerQuestions).then(function ({ name, id, email, github }) {
         const engineer = new Engineer(name, id, email, github);
         employees.push(engineer);
-        console.log(engineer);
         return selectEmployee(); 
     })
 }
@@ -133,7 +131,6 @@ function addIntern() {
     return inquirer.prompt(internQuestions).then(function ({ name, id, email, school }) {
         const intern = new Intern(name, id, email, school);
         employees.push(intern);
-        console.log(intern);
         return selectEmployee(); 
     })
 }
